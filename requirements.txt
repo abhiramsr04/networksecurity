@@ -3,4 +3,5 @@ pandas
 python-dotenv
 pymongo
 certifi
+pymongo[srv]==3.6
 
