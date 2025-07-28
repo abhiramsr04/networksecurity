@@ -18,11 +18,6 @@ from sklearn.ensemble import (RandomForestClassifier, AdaBoostClassifier, Gradie
 
 import mlflow
 
-import dagshub
-dagshub.init(repo_owner='abhiramsr173', repo_name='networksecurity', mlflow=True)
-
-
-
 class ModelTrainer:
     def __init__(self, model_trainer_config: ModelTrainerConfig, data_transformation_artifact: DataTransformationArtifact):
         try:
@@ -108,8 +103,6 @@ class ModelTrainer:
         logging.info(f"Model trainer Artifact: {model_trainer_artifact}")
         return model_trainer_artifact
 
-
-    
     def initiate_model_trainer(self) -> ModelTrainerArtifact:
         try:
             train_file_path = self.data_transformation_artifact.transformed_train_file_path
