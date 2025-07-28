@@ -3,6 +3,10 @@ pandas
 python-dotenv
 pymongo
 certifi
-pymongo[srv]
+pymongo
 scikit-learn
 pyaml
+mlflow
+dagshub
+fastapi
+unicorn
