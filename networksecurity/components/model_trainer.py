@@ -17,6 +17,10 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import (RandomForestClassifier, AdaBoostClassifier, GradientBoostingClassifier)
 
 import mlflow
+from urllib.parse import urlparse
+
+import dagshub
+dagshub.init(repo_owner='abhiramsr173', repo_name='networksecurity', mlflow=True)
 
 class ModelTrainer:
     def __init__(self, model_trainer_config: ModelTrainerConfig, data_transformation_artifact: DataTransformationArtifact):
@@ -27,6 +31,8 @@ class ModelTrainer:
             raise NetworkSecurityException(e, sys) from e
         
     def track_mlflow(self, best_model, classificationmetric):
+        mlflow.set_registry_uri("https://dagshub.com/abhiramsr173/networksecurity.mlflow")
+        tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
         with mlflow.start_run():
             f1_score = classificationmetric.f1_score
             precision_score = classificationmetric.precision_score
@@ -36,6 +42,10 @@ class ModelTrainer:
             mlflow.log_metric("precision",precision_score)
             mlflow.log_metric("recall_score",recall_score)
             mlflow.sklearn.log_model(best_model,"Model")
+            if tracking_url_type_store != "file":
+                mlflow.sklearn.log_model(best_model, "model", registered_model_name="best_model")
+            else:
+                mlflow.sklearn.log_model(best_model, "model")
 
         
     def train_model(self, X_train, y_train, X_test, y_test):
@@ -79,7 +89,7 @@ class ModelTrainer:
         classification_train_metric=get_classification_score(y_true=y_train,y_pred=y_train_pred)
 
         ##Track the experiments with mlflow
-        self.track_mlflow(best_model,classification_train_metric)
+        self.track_mlflow(best_model,classificationmetric=classification_train_metric)
 
 
 
