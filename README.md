@@ -17,8 +17,9 @@ The solution is designed to be **production-ready**, modular, and scalable for r
 - **Containerized Environment**: `Dockerfile` for portable deployment.  
 
 ---
-```
+
 ## 📂 Project Structure
+```
 ├── app.py # Web API for model inference
 ├── main.py # Entry point for running the ML pipeline
 ├── push_data.py # Pushes raw data to database/cloud
