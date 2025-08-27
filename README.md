@@ -17,7 +17,7 @@ The solution is designed to be **production-ready**, modular, and scalable for r
 - **Containerized Environment**: `Dockerfile` for portable deployment.  
 
 ---
-
+```
 ## 📂 Project Structure
 ├── app.py # Web API for model inference
 ├── main.py # Entry point for running the ML pipeline
@@ -39,7 +39,7 @@ The solution is designed to be **production-ready**, modular, and scalable for r
 ├── Artifacts/ # Stored experiment outputs
 ├── final_model/ # Final trained model + preprocessor
 └── logs/ # Logs for monitoring pipeline
-
+```
 
 ---
 
@@ -101,5 +101,6 @@ Abhiram S R (B.Tech, NITK Surathkal)
 
 🌐 Portfolio: [link](https://abhiram-s-r-portfolio-delta.vercel.app/)
 
-💼 LinkedIn: [link](https://www.linkedin.com/in/abhiram-s-r/)
+💼 LinkedIn: [link](https://www.linkedin.com/in/abhiramsr2309/)
 
+📧 Email: [link](mailto:abhiramsr173@gmail.com)
